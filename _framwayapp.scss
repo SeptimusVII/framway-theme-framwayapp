@@ -1,3 +1,9 @@
+%header-w-actions{display: flex;justify-content: space-between; flex-wrap: wrap;align-items: center; @extend .m-bottom;}
+.app__header{@extend %header-w-actions;
+	& h1,& .h1,
+	& h2,& .h2{margin-bottom: 0;}
+}
+
 .led{width: 0.8em;height: 0.8em; flex-shrink: 0; background: color(greylight); border-radius: 100%; display: inline-block; box-shadow: 1px 2px 1px rgba(#000,0.25), inset -1px -1px 5px #fff;}
 @each $key, $value in $colors{
 	.led--#{$key}{@extend .led; background: $value;}
@@ -10,27 +16,33 @@
 #app__actions{}
 #app__status{@extend .led;
 	&.status--ok{@extend .led--green !optional;}
+	&[class*="status--update"],
 	&.status--build{@extend .led--gold !optional;}
-	&.status--install,&.status--reset{@extend .led--orange !optional;}
+	&.status--install,
+	&.status--reset{@extend .led--orange !optional;}
 }
 #app__version{ font-weight: 300; font-size: 0.6em;
 	&.status--ok{@extend .ft-grey!optional;}
+	&[class*="status--update"],
 	&.status--build{@extend .ft-gold!optional;}
-	&.status--install,&.status--reset{@extend .ft-orange!optional;}
+	&.status--install,
+	&.status--reset{@extend .ft-orange!optional;}
 }
 
-.app__list{ list-style: none; padding: 0;user-select: none;
+.app__list{ list-style: none; padding: 0;user-select: none; margin-bottom: 0;
 	&:empty{display: none;}
 	&:not(:empty)+p{display: none;}
-	li{padding: 0.5em; background: white; display: flex; justify-content: space-between;
+	li{padding: 0.5em 0; background: white; display: flex; justify-content: space-between;
 		input,textarea,select,input+label{margin: 0;}
 		&.draggable-source--is-dragging{opacity: 0.6}
 		&.draggable-source--is-dragging,
 		&.draggable-mirror{border: 2px dashed $primary;}
 
-		.input-actions{ margin-right: -5px;
-			[data-action]{cursor: pointer;margin: 0 3px;}
-			[data-action=move]{cursor: grab;margin: 0 5px;}
-		}
+	}
+}
+.input-actions{
+	[data-action]{cursor: pointer;margin: 0 3px;}
+	[data-action=move]{cursor: grab;margin: 0 5px;
+		&:last-child{margin-right: 0;}
 	}
 }
