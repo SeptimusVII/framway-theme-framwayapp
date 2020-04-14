@@ -19,14 +19,14 @@
 	&[class*="status--update"],
 	&.status--build{@extend .led--gold !optional;}
 	&.status--install,
-	&.status--reset{@extend .led--orange !optional;}
+	&.status--delete{@extend .led--orange !optional;}
 }
 #app__version{ font-weight: 300; font-size: 0.6em;
 	&.status--ok{@extend .ft-grey!optional;}
 	&[class*="status--update"],
 	&.status--build{@extend .ft-gold!optional;}
 	&.status--install,
-	&.status--reset{@extend .ft-orange!optional;}
+	&.status--delete{@extend .ft-orange!optional;}
 }
 
 .app__list{ list-style: none; padding: 0;user-select: none; margin-bottom: 0;
