@@ -10,7 +10,7 @@ app.addCustomEventListener = function (selector, event, handler) {
             var targetElement = evt.target;
             while (targetElement != null) {
                 if (targetElement.matches(selector)) {
-                    handler(evt);
+                    handler(targetElement);
                     return;
                 }
                 targetElement = targetElement.parentElement;
